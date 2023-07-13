@@ -1,24 +1,41 @@
 from pymongo import MongoClient
 import certifi
 
-# Establish connection to MongoDB
+# Connect to the MongoDB server
 client = MongoClient("mongodb+srv://admin:admin@cluster0.l5ipfnd.mongodb.net/", tlsCAFile=certifi.where())
+
+# Access the pytech database
 db = client.pytech
+
+# Access the students collection
 students = db.students
 
+# Insert three new student documents
+student1 = {
+    "student_id": 1007,
+    "first_name": "John",
+    "last_name": "Doe"
+}
 
-# Create new student documents
-new_students = [
-    {"student_id": 1007, "first_name": "John", "last_name": "Doe"},
-    {"student_id": 1008, "first_name": "Jane", "last_name": "Smith"},
-    {"student_id": 1009, "first_name": "Michael", "last_name": "Johnson"}
-]
+student2 = {
+    "student_id": 1008,
+    "first_name": "Jane",
+    "last_name": "Smith"
+}
 
-# Insert new student documents and retrieve the inserted IDs
-inserted_ids = []
-for student in new_students:
-    result = students.insert_one(student)
-    inserted_ids.append(result.inserted_id)
+student3 = {
+    "student_id": 1009,
+    "first_name": "Mark",
+    "last_name": "Johnson"
+}
+
+# Insert the documents and get the inserted IDs
+student_id1 = students.insert_one(student1).inserted_id
+student_id2 = students.insert_one(student2).inserted_id
+student_id3 = students.insert_one(student3).inserted_id
 
 # Display the returned student IDs
-print("Inserted Student IDs:", inserted_ids)
+print("Student IDs:")
+print(student_id1)
+print(student_id2)
+print(student_id3)
