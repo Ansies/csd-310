@@ -3,9 +3,9 @@ from mysql.connector import errorcode
 
 config = {
     "user": "TJ",
-    "password" = "aslover22",
-    "host" = "localhost",
-    "database" = "pysports",
+    "password": "aslover22",
+    "host":  "localhost",
+    "database": "pysports",
     "raise_on_warnings": True
 }
 
@@ -23,7 +23,7 @@ except mysql.connector.Error as err:
     elif err.errno == errorcode.ER_BAD_DB_ERROR:
         print(" The specified database does not exist")
     
-    else
+    else:
         print(err)
 
 finally:
