@@ -1,6 +1,6 @@
 import mysql.connector
 
-# Replace these with your actual database credentials
+
 db_config = {
     'host': 'localhost',
     'user': 'root',
